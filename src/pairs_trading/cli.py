@@ -60,6 +60,25 @@ def build_parser() -> argparse.ArgumentParser:
         default=defaults.coint_pvalue,
         help="cointegration p-value threshold",
     )
+    g.add_argument(
+        "--no-unit-root-pretest",
+        action="store_true",
+        help=(
+            "skip step 1 (ADF on each stock's price levels); together with --single-ordering "
+            "this reproduces the naive screen"
+        ),
+    )
+    g.add_argument(
+        "--unit-root-pvalue",
+        type=float,
+        default=defaults.unit_root_pvalue,
+        help="a stock is I(1)-eligible when its levels ADF p-value is above this",
+    )
+    g.add_argument(
+        "--single-ordering",
+        action="store_true",
+        help="test only the alphabetical orientation of each pair instead of both",
+    )
     g.add_argument("--zscore-window", type=int, default=defaults.zscore_window)
     g.add_argument("--entry-z", type=float, default=defaults.entry_z)
     g.add_argument("--exit-z", type=float, default=defaults.exit_z)
@@ -92,6 +111,9 @@ def config_from_args(args: argparse.Namespace) -> PipelineConfig:
         end=args.end,
         sectors=tuple(args.sectors),
         coint_pvalue=args.pvalue,
+        unit_root_pretest=not args.no_unit_root_pretest,
+        unit_root_pvalue=args.unit_root_pvalue,
+        test_both_orderings=not args.single_ordering,
         zscore_window=args.zscore_window,
         entry_z=args.entry_z,
         exit_z=args.exit_z,

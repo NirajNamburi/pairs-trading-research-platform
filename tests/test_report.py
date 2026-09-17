@@ -48,10 +48,12 @@ def _screened(rows: list[tuple[str, str, float, float]]) -> pd.DataFrame:
                 "ticker_b": b,
                 "sector": "s",
                 "pvalue": p,
+                "test_stat": -3.5,
                 "hedge_ratio": h,
                 "intercept": 0.0,
                 "half_life": 5.0,
                 "n_obs": 100,
+                "orientation": f"{a} on {b}",
             }
             for a, b, p, h in rows
         ],

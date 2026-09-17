@@ -20,7 +20,9 @@ RESULT_COLUMNS = [
     "ticker_b",
     "sector",
     "pvalue",
+    "test_stat",
     "hedge_ratio",
+    "orientation",
     "half_life",
     "sharpe",
     "annualized_return",
@@ -50,7 +52,9 @@ def build_results_table(
                 "ticker_b": r.ticker_b,
                 "sector": s["sector"],
                 "pvalue": float(s["pvalue"]),
+                "test_stat": float(s["test_stat"]),
                 "hedge_ratio": r.hedge_ratio,
+                "orientation": s["orientation"],
                 "half_life": float(s["half_life"]),
                 **summarize(r.daily_pnl, r.trades, cfg),
             }
@@ -69,6 +73,7 @@ def build_summary(
     table: pd.DataFrame,
     trading_index: pd.Index,
     portfolio_metrics: Mapping[str, float],
+    pretest: pd.DataFrame | None = None,
 ) -> dict[str, object]:
     profitable = table.loc[table["net_pnl"] > 0]
     traded = table.loc[table["n_trades"] > 0]
@@ -108,6 +113,15 @@ def build_summary(
             "expected_false_positives_at_threshold": float(len(screened) * cfg.coint_pvalue),
             "require_positive_hedge_ratio": cfg.require_positive_hedge_ratio,
             "n_selected": int(len(selected)),
+            "unit_root_pretest": {
+                "enabled": cfg.unit_root_pretest,
+                "pvalue_threshold": cfg.unit_root_pvalue,
+                "n_tested": int(len(pretest)) if pretest is not None else 0,
+                "dropped": (
+                    pretest.loc[~pretest["is_i1"], "ticker"].tolist() if pretest is not None else []
+                ),
+            },
+            "both_orderings": cfg.test_both_orderings,
         },
         "pairs": {
             "n_backtested": int(len(table)),
@@ -162,6 +176,22 @@ def render_summary_markdown(
     tp = summary["trading_period"]
     uni = summary["universe"]
     best, worst = pairs["best_by_sharpe"], pairs["worst_by_sharpe"]
+    pre = scr.get("unit_root_pretest", {"enabled": False})
+    if pre["enabled"]:
+        dropped = pre["dropped"]
+        pretest_line = (
+            f"- Unit-root pretest: {pre['n_tested']} tickers tested; {len(dropped)} dropped as "
+            f"stationary on their own (levels ADF p <= {pre['pvalue_threshold']:g})"
+            + (": " + ", ".join(dropped) if dropped else "")
+            + "."
+        )
+    else:
+        pretest_line = "- Unit-root pretest: off (naive screen)."
+    orientation_note = (
+        " Both orientations tested per pair."
+        if scr.get("both_orderings", False)
+        else " Alphabetical orientation only."
+    )
 
     lines = [
         "# Pairs trading backtest summary",
@@ -180,11 +210,13 @@ def render_summary_markdown(
             else ""
         )
         + ".",
+        pretest_line,
         f"- Pairs tested: {scr['n_pairs_tested']}. Cointegrated at p < {scr['pvalue_threshold']}: "
         f"**{scr['n_cointegrated']}** (about {scr['expected_false_positives_at_threshold']:.0f} "
         f"would be expected by chance). Selected for backtesting: {scr['n_selected']}"
         + (" (positive hedge ratio required)" if scr["require_positive_hedge_ratio"] else "")
-        + ".",
+        + "."
+        + orientation_note,
         f"- Pairs profitable after costs out of sample: "
         f"**{pairs['n_profitable_after_costs']} of {pairs['n_backtested']}** "
         f"({pairs['n_with_trades']} traded at least once).",
@@ -352,11 +384,16 @@ def write_reports(
     summary: Mapping[str, object],
     cfg: PipelineConfig,
     out_dir: Path,
+    pretest: pd.DataFrame | None = None,
 ) -> dict[str, Path]:
     """Write every report artefact to ``out_dir`` and return ``{name: path}``."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     files: dict[str, Path] = {}
+
+    if pretest is not None:
+        files["unit_root_pretest"] = out_dir / "unit_root_pretest.csv"
+        pretest.to_csv(files["unit_root_pretest"], index=False)
 
     files["screened_pairs"] = out_dir / "screened_pairs.csv"
     screened.to_csv(files["screened_pairs"], index=False)

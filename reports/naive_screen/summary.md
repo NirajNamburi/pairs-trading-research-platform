@@ -5,11 +5,11 @@ Formation (screening) period: **2019-01-01 to 2021-12-31**. Out-of-sample tradin
 ## Headline findings
 
 - Universe: 50 tickers across utilities_top50.
-- Unit-root pretest: 50 tickers tested; 7 dropped as stationary on their own (levels ADF p <= 0.05): D, AEP, PCG, SRE, ATO, ETR, CMS.
-- Pairs tested: 903. Cointegrated at p < 0.05: **33** (about 45 would be expected by chance). Selected for backtesting: 23 (positive hedge ratio required). Both orientations tested per pair.
-- Pairs profitable after costs out of sample: **10 of 23** (23 traded at least once).
-- Equal-weight portfolio across all 23 pairs: Sharpe **-0.40**, annualised return -1.05%, max drawdown -6.20%, 716 trades, win rate 59.4%, average hold 14.7 days.
-- Best pair by Sharpe: **NEE/CWEN** (Sharpe 0.68, return 24.84%, 35 trades).
+- Unit-root pretest: off (naive screen).
+- Pairs tested: 1225. Cointegrated at p < 0.05: **94** (about 61 would be expected by chance). Selected for backtesting: 68 (positive hedge ratio required). Alphabetical orientation only.
+- Pairs profitable after costs out of sample: **37 of 68** (68 traded at least once).
+- Equal-weight portfolio across all 68 pairs: Sharpe **-0.09**, annualised return -0.47%, max drawdown -11.05%, 2167 trades, win rate 63.6%, average hold 14.8 days.
+- Best pair by Sharpe: **CWEN/NEE** (Sharpe 0.68, return 22.98%, 34 trades).
 - Worst pair by Sharpe: CNP/UGI (Sharpe -1.12, return -41.63%).
 
 ## Assumptions
@@ -23,13 +23,13 @@ Formation (screening) period: **2019-01-01 to 2021-12-31**. Out-of-sample tradin
 
 | ticker_a | ticker_b | sector | pvalue | hedge_ratio | half_life | sharpe | total_return | max_drawdown | n_trades | win_rate |
 |---|---|---|---|---|---|---|---|---|---|---|
-| NEE | CWEN | utilities_top50 | 0.0001 | 2.16 | 11.4 | 0.68 | 24.84% | -11.52% | 35 | 74% |
-| WTRG | CWEN | utilities_top50 | 0.0430 | 0.58 | 23.6 | 0.58 | 22.86% | -12.97% | 32 | 59% |
+| CWEN | NEE | utilities_top50 | 0.0001 | 0.44 | 11.7 | 0.68 | 22.98% | -11.30% | 34 | 71% |
+| CMS | WTRG | utilities_top50 | 0.0142 | 0.78 | 19.2 | 0.59 | 15.22% | -11.48% | 32 | 78% |
 | EVRG | OTTR | utilities_top50 | 0.0318 | 0.49 | 27.9 | 0.49 | 16.64% | -9.08% | 35 | 74% |
+| AEP | CWEN | utilities_top50 | 0.0238 | 0.23 | 23.0 | 0.48 | 26.11% | -20.51% | 33 | 70% |
 | EXC | NFG | utilities_top50 | 0.0498 | 0.42 | 31.3 | 0.48 | 15.41% | -12.48% | 28 | 64% |
+| D | NEE | utilities_top50 | 0.0210 | 0.17 | 12.8 | 0.44 | 20.72% | -24.81% | 30 | 67% |
 | AWK | CWEN | utilities_top50 | 0.0196 | 4.02 | 17.2 | 0.44 | 16.12% | -10.45% | 34 | 71% |
 | DTE | PEG | utilities_top50 | 0.0027 | 1.94 | 12.4 | 0.38 | 9.34% | -11.50% | 31 | 65% |
-| NWE | SR | utilities_top50 | 0.0055 | 0.72 | 15.2 | 0.17 | 4.20% | -8.69% | 35 | 57% |
-| ES | WEC | utilities_top50 | 0.0152 | 0.85 | 21.2 | 0.09 | 2.22% | -10.76% | 32 | 66% |
-| EIX | ED | utilities_top50 | 0.0432 | 0.74 | 23.4 | 0.09 | 2.54% | -20.27% | 30 | 70% |
-| AWK | NEE | utilities_top50 | 0.0069 | 1.88 | 16.9 | 0.04 | 1.22% | -14.59% | 26 | 62% |
+| D | EVRG | utilities_top50 | 0.0427 | 0.44 | 17.4 | 0.38 | 12.07% | -13.88% | 29 | 72% |
+| AEP | SWX | utilities_top50 | 0.0401 | 0.18 | 27.6 | 0.31 | 14.44% | -15.39% | 36 | 75% |

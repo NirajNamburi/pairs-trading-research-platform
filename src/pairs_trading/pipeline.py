@@ -8,7 +8,7 @@ from time import perf_counter
 import pandas as pd
 
 from pairs_trading.backtest import PairResult, aggregate_portfolio, backtest_pair
-from pairs_trading.cointegration import screen_pairs, select_cointegrated
+from pairs_trading.cointegration import pretest_universe, screen_pairs, select_cointegrated
 from pairs_trading.config import PipelineConfig
 from pairs_trading.data import clean_prices, load_prices, split_periods
 from pairs_trading.metrics import summarize_portfolio
@@ -35,6 +35,7 @@ class PipelineResult:
     table: pd.DataFrame
     summary: dict[str, object]
     files: dict[str, Path] = field(default_factory=dict)
+    pretest: pd.DataFrame | None = None  # step-1 unit-root table, None when the pretest is off
 
 
 def backtest_selected_pairs(
@@ -95,7 +96,22 @@ def run_pipeline(
 
     # Stage 2 - cointegration screen on the formation period only
     t1 = perf_counter()
-    screened = screen_pairs(close_formation, universe, n_jobs=cfg.n_jobs)
+    pretest: pd.DataFrame | None = None
+    close_screen = close_formation
+    if cfg.unit_root_pretest:
+        pretest = pretest_universe(close_formation, cfg.unit_root_pvalue)
+        eligible = set(pretest.loc[pretest["is_i1"], "ticker"])
+        dropped_i0 = pretest.loc[~pretest["is_i1"], "ticker"].tolist()
+        log.info(
+            "unit-root pretest: %d of %d tickers are I(1); dropped as stationary: %s",
+            len(eligible),
+            len(pretest),
+            ", ".join(dropped_i0) if dropped_i0 else "none",
+        )
+        close_screen = close_formation[[t for t in close_formation.columns if t in eligible]]
+    screened = screen_pairs(
+        close_screen, universe, n_jobs=cfg.n_jobs, both_orderings=cfg.test_both_orderings
+    )
     selected = select_cointegrated(screened, cfg.coint_pvalue, cfg.require_positive_hedge_ratio)
     log.info(
         "screened %d pairs: %d cointegrated at p < %.2f, %d selected for backtesting (%.1fs)",
@@ -132,6 +148,7 @@ def run_pipeline(
         table=table,
         trading_index=close_trading.index,
         portfolio_metrics=portfolio_metrics,
+        pretest=pretest,
     )
     files: dict[str, Path] = {}
     if write:
@@ -144,6 +161,7 @@ def run_pipeline(
             summary=summary,
             cfg=cfg,
             out_dir=cfg.reports_dir,
+            pretest=pretest,
         )
     log.info("pipeline finished in %.1fs", perf_counter() - t0)
 
@@ -162,4 +180,5 @@ def run_pipeline(
         table=table,
         summary=summary,
         files=files,
+        pretest=pretest,
     )

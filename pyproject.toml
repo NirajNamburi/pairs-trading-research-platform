@@ -25,6 +25,9 @@ dependencies = [
 dev = ["pytest>=7", "ruff==0.16.7"]
 # Only needed to (re)build a universe with `python -m pairs_trading.universe_selection`.
 universe = ["requests>=2.31", "lxml>=5"]
+# The Streamlit research viewer: `python -m pairs_trading.ui`. 1.51 is the first release where
+# both st.dataframe and st.plotly_chart accept width="stretch".
+ui = ["streamlit>=1.51", "plotly>=5"]
 
 [project.scripts]
 pairs-trading = "pairs_trading.cli:main"

@@ -25,6 +25,38 @@ def test_cointegrated_pair_is_detected_with_correct_hedge_ratio():
     assert stats["n_obs"] == 750
 
 
+def test_swapped_orientation_carries_the_winning_hedge_ratio():
+    """``a = alpha + beta * b``: passing the pair in as ``(b, a)`` must make the swap branch win
+    and report the winning orientation's slope (about ``beta``), not the reciprocal fitted on
+    the alphabetical orientation. Everything else must match ``(a, b)`` exactly."""
+    a, b = make_cointegrated_pair(n=750, beta=2.0, phi=0.9, seed=0)
+    ab = engle_granger_test(a, b)
+    ba = engle_granger_test(b, a)
+    assert not ab["swapped"] and ba["swapped"]
+    assert ba["test_stat"] == ab["test_stat"] and ba["pvalue"] == ab["pvalue"]
+    assert ba["hedge_ratio"] == pytest.approx(ab["hedge_ratio"])
+    assert ba["hedge_ratio"] == pytest.approx(2.0, rel=0.10)
+    assert ba["intercept"] == pytest.approx(ab["intercept"])
+    assert ba["half_life"] == pytest.approx(ab["half_life"])
+
+    forced = engle_granger_test(b, a, both_orderings=False)  # b on a: slope is about 1 / beta
+    assert not forced["swapped"]
+    assert forced["hedge_ratio"] == pytest.approx(0.5, rel=0.10)
+
+
+def test_screen_reports_the_winning_regressand_as_ticker_a():
+    """The screen enumerates pairs alphabetically; when the reverse orientation wins, the labels
+    must swap with the statistics so the traded spread is still ``ticker_a - beta * ticker_b``."""
+    a, b = make_cointegrated_pair(n=750, beta=2.0, phi=0.9, seed=0)
+    close = pd.DataFrame({"X": b, "Y": a}, index=bdays(750))  # true relation: Y = 10 + 2 X
+    row = screen_pairs(close, {"X": "s", "Y": "s"}, n_jobs=1).iloc[0]
+    assert (row["ticker_a"], row["ticker_b"], row["orientation"]) == ("Y", "X", "Y on X")
+    assert row["hedge_ratio"] == pytest.approx(2.0, rel=0.10)
+    expected = engle_granger_test(a, b)
+    assert row["test_stat"] == expected["test_stat"] and row["pvalue"] == expected["pvalue"]
+    assert row["hedge_ratio"] == pytest.approx(expected["hedge_ratio"])
+
+
 def test_independent_random_walks_are_not_cointegrated():
     a, b = make_random_walks(n=750, seed=1)
     stats = engle_granger_test(a, b)
@@ -109,7 +141,14 @@ def test_screen_pairs_returns_every_tested_pair_sorted_by_pvalue():
     assert list(screened.columns) == PAIR_COLUMNS
     assert len(screened) == 6  # C(4, 2) energy pairs; the lone utility has no partner
     assert screened["pvalue"].is_monotonic_increasing
-    assert screened.iloc[0][["ticker_a", "ticker_b"]].tolist() == ["A", "B"]
+    top = screened.iloc[0]
+    assert {top["ticker_a"], top["ticker_b"]} == {"A", "B"}
+    assert top["orientation"] == f"{top['ticker_a']} on {top['ticker_b']}"
+    # A = 10 + 2 B: the reported slope must belong to the reported orientation
+    assert top["hedge_ratio"] == pytest.approx(2.0 if top["ticker_a"] == "A" else 0.5, rel=0.10)
+
+    single = screen_pairs(close, universe, n_jobs=1, both_orderings=False)
+    assert (single["ticker_a"] < single["ticker_b"]).all()  # alphabetical when not swapping
 
 
 def test_screen_pairs_parallel_matches_serial():

@@ -43,6 +43,9 @@ class PipelineConfig:
     # Cointegration screening (formation period only)
     coint_pvalue: float = 0.05
     require_positive_hedge_ratio: bool = True
+    unit_root_pretest: bool = True  # step 1: drop tickers whose price levels are stationary
+    unit_root_pvalue: float = 0.05  # levels ADF must NOT reject at this level to count as I(1)
+    test_both_orderings: bool = True  # step 2: fit A on B and B on A, keep the stronger
 
     # Signal
     zscore_window: int = 30  # rolling window (trading days) for spread mean / std
@@ -85,6 +88,8 @@ class PipelineConfig:
             raise ValueError("zscore_window must be at least 2")
         if not 0.0 < self.coint_pvalue < 1.0:
             raise ValueError("coint_pvalue must be in (0, 1)")
+        if not 0.0 < self.unit_root_pvalue < 1.0:
+            raise ValueError("unit_root_pvalue must be in (0, 1)")
         if self.slippage_bps < 0 or self.transaction_cost_bps < 0:
             raise ValueError("costs cannot be negative")
         if self.trading_days_per_year < 1:

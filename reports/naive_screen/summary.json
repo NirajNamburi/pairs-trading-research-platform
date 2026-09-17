@@ -10,9 +10,9 @@
     "ffill_limit": 3,
     "coint_pvalue": 0.05,
     "require_positive_hedge_ratio": true,
-    "unit_root_pretest": true,
+    "unit_root_pretest": false,
     "unit_root_pvalue": 0.05,
-    "test_both_orderings": true,
+    "test_both_orderings": false,
     "zscore_window": 30,
     "entry_z": 2.0,
     "exit_z": 0.5,
@@ -23,8 +23,8 @@
     "trading_days_per_year": 252,
     "n_jobs": 4,
     "data_dir": "data",
-    "reports_dir": "reports",
-    "n_plot_pairs": 2
+    "reports_dir": "reports\\naive_screen",
+    "n_plot_pairs": 0
   },
   "universe": {
     "n_tickers": 50,
@@ -40,38 +40,30 @@
     "n_days": 1003
   },
   "screening": {
-    "n_pairs_tested": 903,
-    "n_cointegrated": 33,
+    "n_pairs_tested": 1225,
+    "n_cointegrated": 94,
     "pvalue_threshold": 0.05,
-    "expected_false_positives_at_threshold": 45.150000000000006,
+    "expected_false_positives_at_threshold": 61.25,
     "require_positive_hedge_ratio": true,
-    "n_selected": 23,
+    "n_selected": 68,
     "unit_root_pretest": {
-      "enabled": true,
+      "enabled": false,
       "pvalue_threshold": 0.05,
-      "n_tested": 50,
-      "dropped": [
-        "D",
-        "AEP",
-        "PCG",
-        "SRE",
-        "ATO",
-        "ETR",
-        "CMS"
-      ]
+      "n_tested": 0,
+      "dropped": []
     },
-    "both_orderings": true
+    "both_orderings": false
   },
   "pairs": {
-    "n_backtested": 23,
-    "n_with_trades": 23,
-    "n_profitable_after_costs": 10,
+    "n_backtested": 68,
+    "n_with_trades": 68,
+    "n_profitable_after_costs": 37,
     "best_by_sharpe": {
-      "pair": "NEE/CWEN",
-      "sharpe": 0.6778898323740267,
-      "total_return": 0.24841585197419647,
-      "max_drawdown": -0.1151603123655135,
-      "n_trades": 35
+      "pair": "CWEN/NEE",
+      "sharpe": 0.6828972303337603,
+      "total_return": 0.2298059394068916,
+      "max_drawdown": -0.11304836456297074,
+      "n_trades": 34
     },
     "worst_by_sharpe": {
       "pair": "CNP/UGI",
@@ -82,16 +74,16 @@
     }
   },
   "portfolio": {
-    "total_return": -0.041750688423685414,
-    "annualized_return": -0.010489704369659745,
-    "annualized_volatility": 0.026066066801344562,
-    "sharpe": -0.4024275871616602,
-    "max_drawdown": -0.06202461383149038,
-    "n_trades": 716,
-    "win_rate": 0.5935754189944135,
-    "avg_holding_days": 14.705307262569832,
-    "gross_pnl": 0.051829739690893085,
-    "total_costs": 0.09358042811457852,
-    "net_pnl": -0.041750688423685345
+    "total_return": -0.018656661415299966,
+    "annualized_return": -0.004687416427373471,
+    "annualized_volatility": 0.05455232551267041,
+    "sharpe": -0.08592514403963887,
+    "max_drawdown": -0.11049269245964866,
+    "n_trades": 2167,
+    "win_rate": 0.6359021688970927,
+    "avg_holding_days": 14.846792801107522,
+    "gross_pnl": 0.07723489639414155,
+    "total_costs": 0.09589155780944167,
+    "net_pnl": -0.018656661415300015
   }
 }
