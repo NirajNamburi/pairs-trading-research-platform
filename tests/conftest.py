@@ -9,7 +9,8 @@ from pairs_trading.config import PipelineConfig
 
 @pytest.fixture
 def cfg() -> PipelineConfig:
-    return PipelineConfig()
+    """Defaults, but with costs pinned: the hand-computed backtest examples assume 5 + 5 bps."""
+    return PipelineConfig(slippage_bps=5.0, transaction_cost_bps=5.0)
 
 
 def make_cointegrated_pair(

@@ -1,0 +1,582 @@
+{
+  "name": "utilities_top50",
+  "sector": "Utilities",
+  "selected_at": "2026-09-16",
+  "criteria": {
+    "n": 50,
+    "candidate_pool": "GICS Utilities constituents of the S&P 500, 400 and 600",
+    "ranking": "market capitalisation from yfinance on selected_at, descending",
+    "eligibility": "continuous daily price history 2019-01-01 to 2025-12-31: at most 2% of trading days missing"
+  },
+  "n_candidates": 59,
+  "n_selected": 50,
+  "tickers": [
+    "NEE",
+    "SO",
+    "DUK",
+    "AEP",
+    "D",
+    "SRE",
+    "ETR",
+    "VST",
+    "XEL",
+    "EXC",
+    "ED",
+    "PEG",
+    "WEC",
+    "PCG",
+    "AEE",
+    "AWK",
+    "ATO",
+    "DTE",
+    "FE",
+    "ES",
+    "CNP",
+    "PPL",
+    "NRG",
+    "EIX",
+    "CMS",
+    "NI",
+    "EVRG",
+    "LNT",
+    "WTRG",
+    "PNW",
+    "AES",
+    "OGE",
+    "UGI",
+    "IDA",
+    "NFG",
+    "SWX",
+    "CWEN",
+    "TXNM",
+    "ORA",
+    "POR",
+    "NJR",
+    "BKH",
+    "OGS",
+    "SR",
+    "NWE",
+    "MDU",
+    "OTTR",
+    "AWR",
+    "CPK",
+    "AVA"
+  ],
+  "members": [
+    {
+      "rank": 1,
+      "ticker": "NEE",
+      "name": "NextEra Energy",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 167650074386.64026,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 2,
+      "ticker": "SO",
+      "name": "Southern Company",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 99195802419.87209,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 3,
+      "ticker": "DUK",
+      "name": "Duke Energy",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 91817731913.30359,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 4,
+      "ticker": "AEP",
+      "name": "American Electric Power",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 65703317741.9751,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 5,
+      "ticker": "D",
+      "name": "Dominion Energy",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 55858691544.73489,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 6,
+      "ticker": "SRE",
+      "name": "Sempra",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 53423656436.054504,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 7,
+      "ticker": "ETR",
+      "name": "Entergy",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 48886191812.43388,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 8,
+      "ticker": "VST",
+      "name": "Vistra Corp.",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 47119824821.194534,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 9,
+      "ticker": "XEL",
+      "name": "Xcel Energy",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 45417159817.39021,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 10,
+      "ticker": "EXC",
+      "name": "Exelon",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 43723976944.64148,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 11,
+      "ticker": "ED",
+      "name": "Consolidated Edison",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 38987333813.68355,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 12,
+      "ticker": "PEG",
+      "name": "Public Service Enterprise Group",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 35083785607.488556,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 13,
+      "ticker": "WEC",
+      "name": "WEC Energy Group",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 33686308319.56794,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 14,
+      "ticker": "PCG",
+      "name": "PG&E Corporation",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 29401599035.2363,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 15,
+      "ticker": "AEE",
+      "name": "Ameren",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 28525928836.497566,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 16,
+      "ticker": "AWK",
+      "name": "American Water Works",
+      "index": "S&P 500",
+      "sub_industry": "Water Utilities",
+      "market_cap_usd": 27376904432.98906,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 17,
+      "ticker": "ATO",
+      "name": "Atmos Energy",
+      "index": "S&P 500",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 27369387178.4467,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 18,
+      "ticker": "DTE",
+      "name": "DTE Energy",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 27197109983.26561,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 19,
+      "ticker": "FE",
+      "name": "FirstEnergy",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 26258680732.214127,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 20,
+      "ticker": "ES",
+      "name": "Eversource Energy",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 25561149036.344025,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 21,
+      "ticker": "CNP",
+      "name": "CenterPoint Energy",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 25248749845.19287,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 22,
+      "ticker": "PPL",
+      "name": "PPL Corporation",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 25142523022.98077,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 23,
+      "ticker": "NRG",
+      "name": "NRG Energy",
+      "index": "S&P 500",
+      "sub_industry": "Independent Power Producers & Energy Traders",
+      "market_cap_usd": 22572401087.179665,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 24,
+      "ticker": "EIX",
+      "name": "Edison International",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 21091654717.45158,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 25,
+      "ticker": "CMS",
+      "name": "CMS Energy",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 20692954534.766968,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 26,
+      "ticker": "NI",
+      "name": "NiSource",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 19498913592.824936,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 27,
+      "ticker": "EVRG",
+      "name": "Evergy",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 18535294816.352966,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 28,
+      "ticker": "LNT",
+      "name": "Alliant Energy",
+      "index": "S&P 500",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 17141311609.144821,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 29,
+      "ticker": "WTRG",
+      "name": "Essential Utilities",
+      "index": "S&P 400",
+      "sub_industry": "Water Utilities",
+      "market_cap_usd": 11733896203.75729,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 30,
+      "ticker": "PNW",
+      "name": "Pinnacle West Capital",
+      "index": "S&P 500",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 11512524998.754776,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 31,
+      "ticker": "AES",
+      "name": "AES Corporation",
+      "index": "S&P 500",
+      "sub_industry": "Independent Power Producers & Energy Traders",
+      "market_cap_usd": 10566026409.670763,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 32,
+      "ticker": "OGE",
+      "name": "OGE Energy",
+      "index": "S&P 400",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 9504804668.130169,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 33,
+      "ticker": "UGI",
+      "name": "UGI Corp",
+      "index": "S&P 400",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 8189417905.518669,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 34,
+      "ticker": "IDA",
+      "name": "Idacorp",
+      "index": "S&P 400",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 7675060826.885925,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 35,
+      "ticker": "NFG",
+      "name": "National Fuel Gas",
+      "index": "S&P 400",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 7636873559.622688,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 36,
+      "ticker": "SWX",
+      "name": "Southwest Gas Corp",
+      "index": "S&P 400",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 6283953134.4589615,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 37,
+      "ticker": "CWEN",
+      "name": "Clearway Energy, Inc. (Class C)",
+      "index": "S&P 600",
+      "sub_industry": "Renewable Electricity",
+      "market_cap_usd": 6154139968.99263,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 38,
+      "ticker": "TXNM",
+      "name": "TXNM Energy",
+      "index": "S&P 400",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 6032319432.281532,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 39,
+      "ticker": "ORA",
+      "name": "Ormat Technologies",
+      "index": "S&P 400",
+      "sub_industry": "Renewable Electricity",
+      "market_cap_usd": 5650953870.955246,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 40,
+      "ticker": "POR",
+      "name": "Portland General Electric",
+      "index": "S&P 400",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 5634586805.454483,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 41,
+      "ticker": "NJR",
+      "name": "New Jersey Resources",
+      "index": "S&P 400",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 5428535111.0,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 42,
+      "ticker": "BKH",
+      "name": "Black Hills Corporation",
+      "index": "S&P 400",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 5375846440.5,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 43,
+      "ticker": "OGS",
+      "name": "One Gas",
+      "index": "S&P 400",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 4805361649.677887,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 44,
+      "ticker": "SR",
+      "name": "Spire",
+      "index": "S&P 400",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 4723113369.498985,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 45,
+      "ticker": "NWE",
+      "name": "NorthWestern Energy",
+      "index": "S&P 400",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 4215202875.4886627,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 46,
+      "ticker": "MDU",
+      "name": "MDU Resources Group, Inc.",
+      "index": "S&P 600",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 3923017274.1580505,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 47,
+      "ticker": "OTTR",
+      "name": "Otter Tail Corporation",
+      "index": "S&P 600",
+      "sub_industry": "Electric Utilities",
+      "market_cap_usd": 3737976136.1480713,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 48,
+      "ticker": "AWR",
+      "name": "American States Water Company",
+      "index": "S&P 600",
+      "sub_industry": "Water Utilities",
+      "market_cap_usd": 3455037445.845001,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 49,
+      "ticker": "CPK",
+      "name": "Chesapeake Utilities Corp.",
+      "index": "S&P 600",
+      "sub_industry": "Gas Utilities",
+      "market_cap_usd": 3127812536.25,
+      "first_price_date": "2019-01-02"
+    },
+    {
+      "rank": 50,
+      "ticker": "AVA",
+      "name": "Avista Corporation",
+      "index": "S&P 600",
+      "sub_industry": "Multi-Utilities",
+      "market_cap_usd": 3077079114.7763443,
+      "first_price_date": "2019-01-02"
+    }
+  ],
+  "excluded": [
+    {
+      "ticker": "CEG",
+      "name": "Constellation Energy",
+      "index": "S&P 500",
+      "market_cap_usd": 91953393639.36588,
+      "reason": "43.6% of trading days missing (first price 2022-01-19)"
+    },
+    {
+      "ticker": "TLN",
+      "name": "Talen Energy",
+      "index": "S&P 400",
+      "market_cap_usd": 13780141180.845428,
+      "reason": "63.2% of trading days missing (first price 2023-06-02)"
+    },
+    {
+      "ticker": "CWT",
+      "name": "California Water Service Group",
+      "index": "S&P 600",
+      "market_cap_usd": 2971368755.87051,
+      "reason": "eligible, but ranked below the top 50 by market cap"
+    },
+    {
+      "ticker": "MGEE",
+      "name": "MGE Energy, Inc.",
+      "index": "S&P 600",
+      "market_cap_usd": 2842690404.3554077,
+      "reason": "eligible, but ranked below the top 50 by market cap"
+    },
+    {
+      "ticker": "HTO",
+      "name": "H2O America",
+      "index": "S&P 600",
+      "market_cap_usd": 2642838579.0126343,
+      "reason": "eligible, but ranked below the top 50 by market cap"
+    },
+    {
+      "ticker": "NWN",
+      "name": "NW Natural",
+      "index": "S&P 600",
+      "market_cap_usd": 2048692417.38443,
+      "reason": "eligible, but ranked below the top 50 by market cap"
+    },
+    {
+      "ticker": "HE",
+      "name": "Hawaiian Electric Industries, Inc.",
+      "index": "S&P 600",
+      "market_cap_usd": 1767007401.8513947,
+      "reason": "eligible, but ranked below the top 50 by market cap"
+    },
+    {
+      "ticker": "MSEX",
+      "name": "Middlesex Water Company",
+      "index": "S&P 600",
+      "market_cap_usd": 1061102625.1382217,
+      "reason": "eligible, but ranked below the top 50 by market cap"
+    },
+    {
+      "ticker": "UTL",
+      "name": "Unitil Corporation",
+      "index": "S&P 600",
+      "market_cap_usd": 955054597.9011307,
+      "reason": "eligible, but ranked below the top 50 by market cap"
+    }
+  ]
+}

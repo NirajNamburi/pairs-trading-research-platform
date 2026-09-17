@@ -43,7 +43,10 @@ def build_parser() -> argparse.ArgumentParser:
         default=list(defaults.sectors),
         choices=available_sectors(),
         metavar="SECTOR",
-        help=f"sectors to screen within; choices: {', '.join(available_sectors())}",
+        help=(
+            f"sectors to screen within; choices: {', '.join(available_sectors())}. "
+            "Overlapping universes (e.g. utilities_top50 with utilities) cannot be combined"
+        ),
     )
     g.add_argument(
         "--refresh-data", action="store_true", help="ignore the Parquet cache and re-download"

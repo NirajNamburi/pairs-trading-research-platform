@@ -11,10 +11,11 @@ from pathlib import Path
 
 # --- Explicit cost assumptions -------------------------------------------------------------
 # Both are expressed in basis points of the traded notional and are applied on EVERY execution
-# (entry and exit, each leg). 5 bps + 5 bps is a simplified, conservative estimate for liquid
-# large-cap US equities. A more advanced model would make slippage a function of trade size
-# relative to average daily volume; that is explicitly out of scope.
-SLIPPAGE_BPS: float = 5.0
+# (entry and exit, each leg). 10 bps slippage + 5 bps commission is a simplified, conservative
+# estimate: the utilities universe reaches into mid-caps, where spreads are wider than for the
+# S&P 500 megacaps (where 5 bps would be typical). A more advanced model would make slippage a
+# function of trade size relative to average daily volume; that is explicitly out of scope.
+SLIPPAGE_BPS: float = 10.0
 TRANSACTION_COST_BPS: float = 5.0
 
 
@@ -25,13 +26,17 @@ class PipelineConfig:
     Dates are inclusive ISO strings. The *formation* period (``start`` .. ``formation_end``) is
     used only to screen pairs and fit hedge ratios; the *trading* period (the day after
     ``formation_end`` .. ``end``) is the out-of-sample backtest window.
+
+    The default universe is ``utilities_top50`` (see :mod:`pairs_trading.universe_selection`);
+    the hardcoded S&P 500 sectors ``energy``, ``financials`` and ``utilities`` remain available
+    for the cross-sector comparison.
     """
 
     # Data
     start: str = "2019-01-01"
     formation_end: str = "2021-12-31"
-    end: str = "2024-12-31"
-    sectors: tuple[str, ...] = ("energy", "financials", "utilities")
+    end: str = "2025-12-31"
+    sectors: tuple[str, ...] = ("utilities_top50",)
     max_missing_frac: float = 0.02  # drop a ticker if more than this fraction of closes is missing
     ffill_limit: int = 3  # forward-fill gaps of at most this many trading days
 

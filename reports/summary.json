@@ -2,11 +2,9 @@
   "config": {
     "start": "2019-01-01",
     "formation_end": "2021-12-31",
-    "end": "2024-12-31",
+    "end": "2025-12-31",
     "sectors": [
-      "energy",
-      "financials",
-      "utilities"
+      "utilities_top50"
     ],
     "max_missing_frac": 0.02,
     "ffill_limit": 3,
@@ -16,7 +14,7 @@
     "entry_z": 2.0,
     "exit_z": 0.5,
     "stop_z": null,
-    "slippage_bps": 5.0,
+    "slippage_bps": 10.0,
     "transaction_cost_bps": 5.0,
     "risk_free_rate": 0.0,
     "trading_days_per_year": 252,
@@ -26,7 +24,7 @@
     "n_plot_pairs": 2
   },
   "universe": {
-    "n_tickers": 89,
+    "n_tickers": 50,
     "dropped_tickers": []
   },
   "formation_period": {
@@ -35,47 +33,47 @@
   },
   "trading_period": {
     "start": "2022-01-03",
-    "end": "2024-12-31",
-    "n_days": 753
+    "end": "2025-12-31",
+    "n_days": 1003
   },
   "screening": {
-    "n_pairs_tested": 1410,
-    "n_cointegrated": 74,
+    "n_pairs_tested": 1225,
+    "n_cointegrated": 94,
     "pvalue_threshold": 0.05,
-    "expected_false_positives_at_threshold": 70.5,
+    "expected_false_positives_at_threshold": 61.25,
     "require_positive_hedge_ratio": true,
-    "n_selected": 71
+    "n_selected": 68
   },
   "pairs": {
-    "n_backtested": 71,
-    "n_with_trades": 71,
-    "n_profitable_after_costs": 33,
+    "n_backtested": 68,
+    "n_with_trades": 68,
+    "n_profitable_after_costs": 37,
     "best_by_sharpe": {
-      "pair": "AXP/FITB",
-      "sharpe": 1.1401356044895081,
-      "total_return": 0.3095836515152083,
-      "max_drawdown": -0.07548161946853349,
-      "n_trades": 25
+      "pair": "CWEN/NEE",
+      "sharpe": 0.6828972303337603,
+      "total_return": 0.2298059394068916,
+      "max_drawdown": -0.11304836456297074,
+      "n_trades": 34
     },
     "worst_by_sharpe": {
-      "pair": "KMI/SLB",
-      "sharpe": -1.3844910370298251,
-      "total_return": -0.3970734761801243,
-      "max_drawdown": -0.43696043154563513,
-      "n_trades": 17
+      "pair": "CNP/UGI",
+      "sharpe": -1.1236246494304225,
+      "total_return": -0.4163345748322742,
+      "max_drawdown": -0.44989955643235713,
+      "n_trades": 21
     }
   },
   "portfolio": {
-    "total_return": -0.004730658098771833,
-    "annualized_return": -0.001583168447397745,
-    "annualized_volatility": 0.026644680599154594,
-    "sharpe": -0.05941780542296976,
-    "max_drawdown": -0.04335495562416358,
-    "n_trades": 1605,
-    "win_rate": 0.626791277258567,
-    "avg_holding_days": 15.529595015576325,
-    "gross_pnl": 0.04067075616918276,
-    "total_costs": 0.04540141426795461,
-    "net_pnl": -0.004730658098771847
+    "total_return": -0.018656661415299966,
+    "annualized_return": -0.004687416427373471,
+    "annualized_volatility": 0.05455232551267041,
+    "sharpe": -0.08592514403963887,
+    "max_drawdown": -0.11049269245964866,
+    "n_trades": 2167,
+    "win_rate": 0.6359021688970927,
+    "avg_holding_days": 14.846792801107522,
+    "gross_pnl": 0.07723489639414155,
+    "total_costs": 0.09589155780944167,
+    "net_pnl": -0.018656661415300015
   }
 }

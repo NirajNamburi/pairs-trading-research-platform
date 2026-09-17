@@ -1,0 +1,81 @@
+{
+  "config": {
+    "start": "2019-01-01",
+    "formation_end": "2021-12-31",
+    "end": "2025-12-31",
+    "sectors": [
+      "energy",
+      "financials",
+      "utilities"
+    ],
+    "max_missing_frac": 0.02,
+    "ffill_limit": 3,
+    "coint_pvalue": 0.05,
+    "require_positive_hedge_ratio": true,
+    "zscore_window": 30,
+    "entry_z": 2.0,
+    "exit_z": 0.5,
+    "stop_z": null,
+    "slippage_bps": 5.0,
+    "transaction_cost_bps": 5.0,
+    "risk_free_rate": 0.0,
+    "trading_days_per_year": 252,
+    "n_jobs": 4,
+    "data_dir": "data",
+    "reports_dir": "reports\\comparison_sp500_sectors",
+    "n_plot_pairs": 0
+  },
+  "universe": {
+    "n_tickers": 89,
+    "dropped_tickers": []
+  },
+  "formation_period": {
+    "start": "2019-01-01",
+    "end": "2021-12-31"
+  },
+  "trading_period": {
+    "start": "2022-01-03",
+    "end": "2025-12-31",
+    "n_days": 1003
+  },
+  "screening": {
+    "n_pairs_tested": 1410,
+    "n_cointegrated": 74,
+    "pvalue_threshold": 0.05,
+    "expected_false_positives_at_threshold": 70.5,
+    "require_positive_hedge_ratio": true,
+    "n_selected": 71
+  },
+  "pairs": {
+    "n_backtested": 71,
+    "n_with_trades": 71,
+    "n_profitable_after_costs": 35,
+    "best_by_sharpe": {
+      "pair": "AXP/FITB",
+      "sharpe": 0.8530509529641802,
+      "total_return": 0.33012582388550304,
+      "max_drawdown": -0.07946265217364012,
+      "n_trades": 32
+    },
+    "worst_by_sharpe": {
+      "pair": "AJG/AMP",
+      "sharpe": -1.0571722326911708,
+      "total_return": -0.4199757360794397,
+      "max_drawdown": -0.49420617989872717,
+      "n_trades": 27
+    }
+  },
+  "portfolio": {
+    "total_return": 8.102047955257582e-05,
+    "annualized_return": 2.0356092569540486e-05,
+    "annualized_volatility": 0.027677125794002524,
+    "sharpe": 0.00073548433898261,
+    "max_drawdown": -0.04335496423043683,
+    "n_trades": 2141,
+    "win_rate": 0.6319476879962634,
+    "avg_holding_days": 15.35964502568893,
+    "gross_pnl": 0.06065798877667126,
+    "total_costs": 0.06057696829711877,
+    "net_pnl": 8.102047955258877e-05
+  }
+}

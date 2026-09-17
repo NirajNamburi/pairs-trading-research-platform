@@ -1,20 +1,20 @@
 # Pairs trading backtest summary
 
-Formation (screening) period: **2019-01-01 to 2021-12-31**. Out-of-sample trading period: **2022-01-03 to 2024-12-31** (753 trading days).
+Formation (screening) period: **2019-01-01 to 2021-12-31**. Out-of-sample trading period: **2022-01-03 to 2025-12-31** (1003 trading days).
 
 ## Headline findings
 
-- Universe: 89 tickers across energy, financials, utilities.
-- Pairs tested: 1410. Cointegrated at p < 0.05: **74** (about 70 would be expected by chance). Selected for backtesting: 71 (positive hedge ratio required).
-- Pairs profitable after costs out of sample: **33 of 71** (71 traded at least once).
-- Equal-weight portfolio across all 71 pairs: Sharpe **-0.06**, annualised return -0.16%, max drawdown -4.34%, 1605 trades, win rate 62.7%, average hold 15.5 days.
-- Best pair by Sharpe: **AXP/FITB** (Sharpe 1.14, return 30.96%, 25 trades).
-- Worst pair by Sharpe: KMI/SLB (Sharpe -1.38, return -39.71%).
+- Universe: 50 tickers across utilities_top50.
+- Pairs tested: 1225. Cointegrated at p < 0.05: **94** (about 61 would be expected by chance). Selected for backtesting: 68 (positive hedge ratio required).
+- Pairs profitable after costs out of sample: **37 of 68** (68 traded at least once).
+- Equal-weight portfolio across all 68 pairs: Sharpe **-0.09**, annualised return -0.47%, max drawdown -11.05%, 2167 trades, win rate 63.6%, average hold 14.8 days.
+- Best pair by Sharpe: **CWEN/NEE** (Sharpe 0.68, return 22.98%, 34 trades).
+- Worst pair by Sharpe: CNP/UGI (Sharpe -1.12, return -41.63%).
 
 ## Assumptions
 
 - Signal at close, execution at the next day's open. Rolling z-score window 30 days; entry |z| > 2.0, exit |z| < 0.5.
-- Slippage 5 bps and commission 5 bps of notional, each leg, on entry and exit.
+- Slippage 10 bps and commission 5 bps of notional, each leg, on entry and exit.
 - $1 gross notional per pair per trade, fixed hedge ratio from the formation regression, risk-free rate 0, 252 trading days per year.
 - Open positions on the last day are force-closed at the final close.
 
@@ -22,13 +22,13 @@ Formation (screening) period: **2019-01-01 to 2021-12-31**. Out-of-sample tradin
 
 | ticker_a | ticker_b | sector | pvalue | hedge_ratio | half_life | sharpe | total_return | max_drawdown | n_trades | win_rate |
 |---|---|---|---|---|---|---|---|---|---|---|
-| AXP | FITB | financials | 0.0413 | 3.55 | 23.3 | 1.14 | 30.96% | -7.55% | 25 | 72% |
-| AXP | COF | financials | 0.0042 | 0.79 | 15.3 | 0.71 | 19.09% | -7.99% | 21 | 67% |
-| MA | PGR | financials | 0.0088 | 3.84 | 16.9 | 0.69 | 23.67% | -12.52% | 24 | 75% |
-| BAC | NTRS | financials | 0.0038 | 0.48 | 14.0 | 0.69 | 18.23% | -6.59% | 26 | 73% |
-| AXP | PNC | financials | 0.0498 | 0.85 | 18.2 | 0.65 | 15.30% | -8.05% | 22 | 64% |
-| NTRS | SCHW | financials | 0.0478 | 0.84 | 22.6 | 0.59 | 18.87% | -12.54% | 22 | 68% |
-| AEP | NEE | utilities | 0.0395 | 0.16 | 24.7 | 0.56 | 19.92% | -17.68% | 25 | 72% |
-| AXP | NTRS | financials | 0.0064 | 1.85 | 21.9 | 0.56 | 15.00% | -9.88% | 21 | 67% |
-| AEP | CNP | utilities | 0.0201 | 0.37 | 23.9 | 0.55 | 20.33% | -15.88% | 26 | 65% |
-| NTRS | ZION | financials | 0.0380 | 1.39 | 27.0 | 0.51 | 17.69% | -11.86% | 22 | 73% |
+| CWEN | NEE | utilities_top50 | 0.0001 | 0.44 | 11.7 | 0.68 | 22.98% | -11.30% | 34 | 71% |
+| CMS | WTRG | utilities_top50 | 0.0142 | 0.78 | 19.2 | 0.59 | 15.22% | -11.48% | 32 | 78% |
+| EVRG | OTTR | utilities_top50 | 0.0318 | 0.49 | 27.9 | 0.49 | 16.64% | -9.08% | 35 | 74% |
+| AEP | CWEN | utilities_top50 | 0.0238 | 0.23 | 23.0 | 0.48 | 26.11% | -20.51% | 33 | 70% |
+| EXC | NFG | utilities_top50 | 0.0498 | 0.42 | 31.3 | 0.48 | 15.41% | -12.48% | 28 | 64% |
+| D | NEE | utilities_top50 | 0.0210 | 0.17 | 12.8 | 0.44 | 20.72% | -24.81% | 30 | 67% |
+| AWK | CWEN | utilities_top50 | 0.0196 | 4.02 | 17.2 | 0.44 | 16.12% | -10.45% | 34 | 71% |
+| DTE | PEG | utilities_top50 | 0.0027 | 1.94 | 12.4 | 0.38 | 9.34% | -11.50% | 31 | 65% |
+| D | EVRG | utilities_top50 | 0.0427 | 0.44 | 17.4 | 0.38 | 12.07% | -13.88% | 29 | 72% |
+| AEP | SWX | utilities_top50 | 0.0401 | 0.18 | 27.6 | 0.31 | 14.44% | -15.39% | 36 | 75% |

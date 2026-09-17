@@ -1,12 +1,19 @@
 import pytest
 
 from pairs_trading.config import PipelineConfig
+from pairs_trading.universe import available_sectors, get_universe
 
 
 def test_defaults_are_valid_and_dates_are_ordered():
     cfg = PipelineConfig()
     assert cfg.start < cfg.formation_end < cfg.end
     assert cfg.n_plot_pairs >= 0
+
+
+def test_default_sectors_resolve_to_a_universe():
+    cfg = PipelineConfig()
+    assert set(cfg.sectors) <= set(available_sectors())
+    assert len(get_universe(cfg.sectors)) > 1
 
 
 @pytest.mark.parametrize(

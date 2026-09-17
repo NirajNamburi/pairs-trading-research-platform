@@ -23,12 +23,17 @@ dependencies = [
 # ruff is pinned exactly: CI gates on `ruff format --check`, and formatter style changes
 # between ruff minor releases would otherwise turn CI red with no code change.
 dev = ["pytest>=7", "ruff==0.16.7"]
+# Only needed to (re)build a universe with `python -m pairs_trading.universe_selection`.
+universe = ["requests>=2.31", "lxml>=5"]
 
 [project.scripts]
 pairs-trading = "pairs_trading.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+pairs_trading = ["universes/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
