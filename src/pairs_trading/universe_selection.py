@@ -37,7 +37,7 @@ WIKIPEDIA_TABLES: dict[str, str] = {
     "S&P 400": "https://en.wikipedia.org/wiki/List_of_S%26P_400_companies",
     "S&P 600": "https://en.wikipedia.org/wiki/List_of_S%26P_600_companies",
 }
-USER_AGENT = "pairs-trading-research-pipeline/0.1 (universe selection script)"
+USER_AGENT = "pairs-trading-research-platform/0.1 (universe selection script)"
 DEFAULT_OUTPUT = Path(__file__).parent / "universes" / "utilities_top50.json"
 
 CANDIDATE_COLUMNS = ["ticker", "name", "index", "sub_industry"]

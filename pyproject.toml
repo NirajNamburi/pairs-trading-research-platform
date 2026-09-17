@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pairs-trading-research-pipeline"
+name = "pairs-trading-research-platform"
 version = "0.1.0"
-description = "Statistical arbitrage research pipeline: cointegration screening, z-score signals and a cost-aware backtest."
+description = "Pairs trading research platform: unit-root pretest, Engle-Granger screen, z-score signals, cost-aware backtest and a Streamlit viewer."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }

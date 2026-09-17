@@ -1,8 +1,8 @@
-# Pairs Trading Research Pipeline: US Utilities
+# Pairs Trading Research Platform: US Utilities
 
-[![CI](https://github.com/NirajNamburi/pairs-trading-research-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/NirajNamburi/pairs-trading-research-pipeline/actions/workflows/ci.yml)
+[![CI](https://github.com/NirajNamburi/pairs-trading-research-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/NirajNamburi/pairs-trading-research-platform/actions/workflows/ci.yml)
 
-A research tool for statistical-arbitrage pairs strategies, in Python, with a worked study on
+A research platform for statistical-arbitrage pairs strategies, in Python, with a worked study on
 the **50 largest US utility stocks by market capitalisation** that have a continuous 2019-2025
 price history. It screens every pair for cointegration with the full four-step Engle-Granger
 procedure, trades the spread with a rolling z-score signal, backtests **out of sample** with
